@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from gtts import gTTS 
 import os
+from playsound import playsound
 
 class Robot():
     def __init__(self, pname, planguage):
@@ -19,7 +20,7 @@ class Robot():
     def RobotRead(self, StringText):
         myrobot = gTTS(text=StringText+u"", lang=self.__language, slow=False)  
         myrobot.save(self.__name+".mp3") 
-        os.system("mpg321 "+self.__name+".mp3")
+        playsound(self.__name+".mp3")
 
     def RobotReadFile(self, NameFile):
         f = open(NameFile, mode='r', encoding='utf-8')
@@ -27,6 +28,6 @@ class Robot():
         f.close()
         myrobot = gTTS(text=mytext, lang=self.__language, slow=False)  
         myrobot.save(self.__name+".mp3") 
-        os.system("mpg321 "+self.__name+".mp3")
+        playsound(self.__name+".mp3")
 
 
